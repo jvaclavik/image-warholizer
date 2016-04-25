@@ -7,15 +7,24 @@ import {Warholizer} from './warholizer';
 })
 export class WarholizePage {
     constructor(){
-
-        setTimeout(function(){
-            var previews = document.getElementById('previews');
-            var image = document.getElementById('source-image');
-            console.info(previews, image);
-            var wrh = new Warholizer(image, previews);
-            wrh.generateClones();
-        },2500);
-
+		
     }
+	
+	/**
+	 * @description Generates clones of source image with applied effects
+	 */
+	applyEffect(){
+		var wrh = new Warholizer({
+			previewsElemId: 'previews',
+			sourceImgId: 'source-image',
+			resultWrapperNameBase: 'result-wrapper-',
+			resultElementNameBase: 'result-',
+			cloneClickedHandler: (target) => {
+				//TODO implement clone clicked handler (share? save?)
+				console.log('clicked', target);
+			}
+		});
+		wrh.generateClones();
+	}
 
 }
