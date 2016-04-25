@@ -6,9 +6,8 @@ export class Warholizer {
         this.img = document.getElementById(options.sourceImgId);
         this.previews = document.getElementById(options.previewsElemId);
         this.canvasArray = [];
-        this.selected = null;
+		
 		this.cloneClickedHandler = options.cloneClickedHandler;
-
         this.resultWrapperNameBase = options.resultWrapperNameBase;
         this.idBase = options.resultElementNameBase;
 
@@ -88,7 +87,6 @@ export class Warholizer {
     }
 
     applyFilter(image, filter) {
-		console.log(Caman);
         Caman(image, function () {
             for (var key in filter) {
                 var value = filter[key];
@@ -98,7 +96,7 @@ export class Warholizer {
                 } else
                     this[key](value);
             }
-
+			
             this.imageHeight(200)
             this.render();
         });
@@ -132,9 +130,5 @@ export class Warholizer {
 
     exportImageData() {
         return document.querySelector("#focused-image > canvas").toDataURL();
-    }
-
-    getSelectedImage() {
-        return this.selected;
     }
 }

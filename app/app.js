@@ -2,6 +2,7 @@ import {App, IonicApp, Platform, MenuController} from 'ionic-angular';
 import {WarholizePage} from './pages/warholize/warholize';
 import {Warholizer} from './pages/warholize/warholizer';
 import {GalleryPage} from './pages/gallery/gallery';
+import {ChooseActionPage} from './pages/choose-action/choose-action';
 
 
 @App({
@@ -22,12 +23,13 @@ class MyApp {
 
     // set our app's pages
     this.pages = [
-      { title: 'Warholize', component: WarholizePage },
+      //{ title: 'Warholize', component: WarholizePage },
       { title: 'Gallery', component: GalleryPage },
+      { title: 'New Effect', component: ChooseActionPage },
     ];
 
     // make HelloIonicPage the root (or first) page
-    this.rootPage = WarholizePage;
+    this.rootPage = ChooseActionPage;
   }
 
   initializeApp() {

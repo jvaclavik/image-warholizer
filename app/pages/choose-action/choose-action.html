@@ -1,0 +1,18 @@
+<!--
+  Generated template for the ChooseActionPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-navbar *navbar>
+  <ion-title>New Effect</ion-title>
+</ion-navbar>
+
+<ion-content padding class="choose-action">
+	<button class="button-positive button-block">Choose from gallery</button>
+	<button class="button-positive button-block" (click)="startCamera()">Take a picture</button>
+	<div class="image-container">
+		<img src="{{imgSrc}}" />
+	</div>
+  
+</ion-content>

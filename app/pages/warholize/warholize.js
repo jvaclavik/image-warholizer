@@ -7,13 +7,14 @@ import {Warholizer} from './warholizer';
 })
 export class WarholizePage {
     constructor(){
-		
+		this.generated = false;
     }
 	
 	/**
 	 * @description Generates clones of source image with applied effects
 	 */
 	applyEffect(){
+		if(this.generated) return;
 		var wrh = new Warholizer({
 			previewsElemId: 'previews',
 			sourceImgId: 'source-image',
@@ -25,6 +26,7 @@ export class WarholizePage {
 			}
 		});
 		wrh.generateClones();
+		this.generated = true;
 	}
 
 }
