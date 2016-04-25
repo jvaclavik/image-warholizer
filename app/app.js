@@ -1,7 +1,4 @@
 import {App, IonicApp, Platform, MenuController} from 'ionic-angular';
-import {HelloIonicPage} from './pages/hello-ionic/hello-ionic';
-import {ListPage} from './pages/list/list';
-import {SettingsPage} from './pages/settings/settings';
 import {WarholizePage} from './pages/warholize/warholize';
 import {Warholizer} from './pages/warholize/warholizer';
 import {GalleryPage} from './pages/gallery/gallery';
@@ -27,9 +24,6 @@ class MyApp {
     this.pages = [
       { title: 'Warholize', component: WarholizePage },
       { title: 'Gallery', component: GalleryPage },
-      { title: 'Hello Ionic', component: HelloIonicPage },
-      { title: 'My First List', component: ListPage },
-      { title: 'Settings', component: SettingsPage }
     ];
 
     // make HelloIonicPage the root (or first) page

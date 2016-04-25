@@ -1,7 +1,7 @@
-//import {Caman} from 'caman';
+import 'caman';
 
 export class Warholizer {
-    /*constructor(sourceImg, previews) {
+    constructor(sourceImg, previews) {
         this.img = sourceImg;
         this.previews = previews;
         this.canvasArray = [];
@@ -130,6 +130,7 @@ export class Warholizer {
     }
 
     applyFilter(image, filter) {
+		console.log(Caman);
         Caman(image, function () {
             for (var key in filter) {
                 var value = filter[key];
@@ -347,5 +348,4 @@ export class Warholizer {
     getSelectedImage() {
         return this.selected;
     }
-*/
 }

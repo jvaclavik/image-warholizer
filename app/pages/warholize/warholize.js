@@ -8,13 +8,13 @@ import {Warholizer} from './warholizer';
 export class WarholizePage {
     constructor(){
 
-        /*setTimeout(function(){
+        setTimeout(function(){
             var previews = document.getElementById('previews');
             var image = document.getElementById('source-image');
             console.info(previews, image);
             var wrh = new Warholizer(image, previews);
             wrh.generateClones();
-        },2500);*/
+        },2500);
 
     }
 
