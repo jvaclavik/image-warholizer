@@ -2,6 +2,7 @@ import {Page, NavController, NavParams} from 'ionic-angular';
 import {SocialSharing} from 'ionic-native';
 import {Warholizer} from './warholizer';
 
+const BASE64_PREFIX = "data:image/jpeg;base64,";
 
 @Page({
     templateUrl: 'build/pages/warholize/warholize.html'
@@ -43,7 +44,10 @@ export class WarholizePage {
 	 * @param {String} String containing base64 reperesentation of the taken picture 
 	 */
 	useNewImageAsSrc(imageData){
-		this.imgSrc = "data:image/jpeg;base64," + imageData;
+		if(~imageData.indexOf(BASE64_PREFIX))
+			this.imgSrc = imageData;
+		else
+			this.imgSrc = BASE64_PREFIX + imageData;
 	}
 
 }

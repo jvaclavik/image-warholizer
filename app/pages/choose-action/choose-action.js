@@ -2,14 +2,6 @@ import {Page, NavController} from 'ionic-angular';
 import {Camera} from 'ionic-native';
 import {WarholizePage} from '../warholize/warholize';
 
-const IMG_ELEM_ID = 'camera-result';
-
-/*
-  Generated class for the ChooseActionPage page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Page({
 	templateUrl: 'build/pages/choose-action/choose-action.html',
 })
@@ -17,12 +9,9 @@ export class ChooseActionPage {
 	static get parameters() {
 		return [[NavController]];
 	}
-
 	constructor(nav) {
 		this.nav = nav;
-		this.imgSrc = 'todo placeholder image';
 	}
-
 	/**
 	 * @description Starts the device's camera
 	 * @param {String} String specifying image source (device storage / camera) 
@@ -37,11 +26,18 @@ export class ChooseActionPage {
 			options.sourceType = 0; //photo library	
 		}
 		Camera.getPicture(options).then((imageData) => {
-			//TODO crop?
 			this.nav.push(WarholizePage, {imageData: imageData});
 		}, (err) => {
-			//TODO
 			console.log('camera error');
+			var demo = document.createElement("canvas");
+			demo.width = 500;
+			demo.height = 500;
+			var img = new Image;
+			img.src = "../../img/demo.jpg";
+			img.onload = () => {
+				demo.getContext("2d").drawImage(img, 0, 0, 500, 500);
+				this.nav.push(WarholizePage, {imageData: demo.toDataURL("image/jpeg")});
+			}
 		});
 	}
 }
