@@ -1,4 +1,5 @@
 import {Page, NavController, NavParams} from 'ionic-angular';
+import {SocialSharing} from 'ionic-native';
 import {Warholizer} from './warholizer';
 
 
@@ -30,8 +31,7 @@ export class WarholizePage {
 			resultWrapperNameBase: 'result-wrapper-',
 			resultElementNameBase: 'result-',
 			cloneClickedHandler: (target) => {
-				//TODO implement clone clicked handler (share? save?)
-				console.log('clicked', target);
+				SocialSharing.share('Cekuj tenhle dis!', 'Foto', target.toDataURL('image/jpeg'));
 			}
 		});
 		wrh.generateClones();
