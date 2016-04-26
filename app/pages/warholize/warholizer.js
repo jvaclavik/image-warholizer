@@ -83,7 +83,6 @@ export class Warholizer {
         while (previews.firstChild) {
             previews.removeChild(previews.firstChild);
         }
-
     }
 
     applyFilter(image, filter) {
@@ -100,8 +99,6 @@ export class Warholizer {
             this.imageHeight(200)
             this.render();
         });
-
-
     }
 
     removeSelectClasses() {
