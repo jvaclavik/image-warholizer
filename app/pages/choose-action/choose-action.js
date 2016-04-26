@@ -1,5 +1,6 @@
 import {Page, NavController} from 'ionic-angular';
 import {Camera} from 'ionic-native';
+import {WarholizePage} from '../warholize/warholize';
 
 const IMG_ELEM_ID = 'camera-result';
 
@@ -24,34 +25,23 @@ export class ChooseActionPage {
 
 	/**
 	 * @description Starts the device's camera
+	 * @param {String} String specifying image source (device storage / camera) 
 	 */
-	startCamera() {
-		console.log(Camera);
+	getPicture(source) {
 		var options = {
-			destinationType: 0
+			destinationType: 0, //base64
+			quality: 50,
+			targetWidth: 500
 		};
+		if(source === 'device'){
+			options.sourceType = 0; //photo library	
+		}
 		Camera.getPicture(options).then((imageData) => {
 			//TODO crop?
-			this.useNewImageAsSrc(imageData);
+			this.nav.push(WarholizePage, {imageData: imageData});
 		}, (err) => {
 			//TODO
 			console.log('camera error');
 		});
-	}
-	
-	/**
-	 * @description Generates image element as a result of camera operation
-	 * @param {String} String containing base64 reperesentation of the taken picture 
-	 */
-	useNewImageAsSrc(imageData){
-		this.imgSrc = "data:image/jpeg;base64," + imageData;
-	}
-	
-	/**
-	 * @description Returns element of existing image takne by camera or null if none present
-	 */
-	getImgElem(){
-		var elem = document.getElementById(IMG_ELEM_ID);
-		return elem;
 	}
 }

@@ -9,10 +9,7 @@
 </ion-navbar>
 
 <ion-content padding class="choose-action">
-	<button class="button-positive button-block">Choose from gallery</button>
-	<button class="button-positive button-block" (click)="startCamera()">Take a picture</button>
-	<div class="image-container">
-		<img src="{{imgSrc}}" />
-	</div>
+	<button class="button-positive button-block" (click)="getPicture('device')">Choose from device</button>
+	<button class="button-positive button-block" (click)="getPicture('camera')">Take a picture</button>
   
 </ion-content>
