@@ -1,6 +1,6 @@
 import {Page, NavController} from 'ionic-angular';
 import {Camera} from 'ionic-native';
-import {WarholizePage} from '../warholize/warholize';
+import {CropperPage} from '../cropper/cropper';
 
 const BASE_DIMENSION = 500;
 
@@ -28,7 +28,7 @@ export class ChooseActionPage {
 			options.sourceType = 0; //photo library	
 		}
 		Camera.getPicture(options).then((imageData) => {
-			this.nav.push(WarholizePage, {imageData: imageData});
+			this.nav.push(CropperPage, {imageData: imageData});
 		}, (err) => {
 			console.log('camera error');
 			var demo = document.createElement("canvas");
@@ -38,7 +38,7 @@ export class ChooseActionPage {
 			img.src = "../../img/demo.jpg";
 			img.onload = () => {
 				demo.getContext("2d").drawImage(img, 0, 0, BASE_DIMENSION, BASE_DIMENSION);
-				this.nav.push(WarholizePage, {imageData: demo.toDataURL("image/jpeg")});
+				this.nav.push(CropperPage, {imageData: demo.toDataURL("image/jpeg")});
 			}
 		});
 	}

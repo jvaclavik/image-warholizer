@@ -2,6 +2,7 @@
   "dependencies": {
     "angular2": "2.0.0-beta.15",
     "caman": "git+https://github.com/danielrys/CamanJS.git",
+    "cropperjs": "^0.7.0",
     "es6-shim": "^0.35.0",
     "ionic-angular": "2.0.0-beta.6",
     "ionic-native": "^1.1.0",
