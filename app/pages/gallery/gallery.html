@@ -7,7 +7,6 @@
 </ion-navbar>
 
 
-<ion-content padding class="getting-started">
-
-    ahoj
+<ion-content padding class="gallery">
+    <img *ngFor="#photo of gallery; #i = index" src="{{photo}}" (click)="showImages(i)" class="image-list-thumb image-{{i}}" alt="" />
 </ion-content>
