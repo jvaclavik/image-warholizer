@@ -48,7 +48,7 @@ export class GalleryProvider {
   }
 
   getGallery(){
-    return ["img/demo.jpg"]; //, "img/c2i_2512016172540.png", "img/codecamp.jpg"
+    return this.gallery; //, "img/c2i_2512016172540.png", "img/codecamp.jpg"
   }
 
 }
