@@ -1,5 +1,8 @@
 import 'caman';
 
+const IMG_HEIGHT = 500;
+const IMG_WIDTH = 500;
+
 export class Warholizer {
     constructor(options) {
 		this.options = options;
@@ -61,7 +64,14 @@ export class Warholizer {
 
     generateClones() {
         var filterCopy = this.cloneFilter(this.filters);
-        for (var index in filterCopy) {
+		var resultCanvas = document.createElement('canvas');
+		resultCanvas.width = IMG_WIDTH;
+		resultCanvas.height = IMG_HEIGHT;
+		var resultCanvasContext = resultCanvas.getContext('2d');
+		var offset = 0;
+		var stripeWidth = Math.round(IMG_WIDTH / filterCopy.length);
+		console.log('calculated stripe width', stripeWidth, ', image width', getComputedStyle(this.img).width);
+        for (let index in filterCopy) {
 
             var filter = filterCopy[index];
             var clone = this.img.cloneNode(true);
@@ -71,11 +81,14 @@ export class Warholizer {
             var div = document.createElement("div");
             div.id = this.resultWrapperNameBase + index;
 
-            this.applyFilter(clone, filter);
-            div.appendChild(clone);
-            this.previews.appendChild(div);
-            this.canvasArray.push(clone);
+            this.applyFilter(clone, filter, (caman) => {
+				resultCanvasContext.drawImage(caman.canvas,offset,0,stripeWidth,IMG_HEIGHT,offset,0,stripeWidth,IMG_HEIGHT); 
+				offset += stripeWidth;
+			});
+			div.appendChild(clone);
+			this.canvasArray.push(clone);
         }
+		this.previews.appendChild(resultCanvas);
     }
 
     deleteClones(previews) {
@@ -85,19 +98,18 @@ export class Warholizer {
         }
     }
 
-    applyFilter(image, filter) {
+    applyFilter(image, filter, callback) {
         Caman(image, function () {
             for (var key in filter) {
                 var value = filter[key];
-                if (key == "channels") {
-                    this[key](value);
-
-                } else
-                    this[key](value);
+				this[key](value);
             }
 			
-            this.imageHeight(200)
-            this.render();
+            this.imageHeight(IMG_HEIGHT)
+            this.render(function(){
+				if(callback) callback(this);
+			});
+			
         });
     }
 
