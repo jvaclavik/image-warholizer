@@ -131,19 +131,16 @@ export class Warholizer {
     }
 
     clickFunction(target, callback) {
-        var wrh = this;
-
-        if (target.tagName != "CANVAS" || target.parentNode.parentNode.id != this.options.previewsElemId) {
+        if (target.tagName != "CANVAS" || target.parentNode.id != this.options.previewsElemId) {
             return;
         }
         this.cloneClickedHandler(target);
     }
 
     bindClick(callback) {
-        var wrh = this;
-        document.addEventListener('click', function (event) {
+        document.addEventListener('click', (event) => {
             var target = event.target;
-			wrh.clickFunction(target, callback);
+			this.clickFunction(target, callback);
         });
     }
 
