@@ -1,4 +1,4 @@
-import {Page, NavController, NavParams, Loading} from 'ionic-angular';
+import {Page, NavController, NavParams, Loading, ActionSheet} from 'ionic-angular';
 import {SocialSharing} from 'ionic-native';
 import {Warholizer} from './warholizer';
 
@@ -43,7 +43,28 @@ export class WarholizePage {
  				loading.dismiss();
 			},
 			cloneClickedHandler: (target) => {
-				SocialSharing.share('Cekuj tenhle dis!', 'Foto', target.toDataURL('image/jpeg'));
+				let sheet = ActionSheet.create({
+					title: 'Action?',
+					buttons: [
+						{
+							text: 'Share',
+							handler: () => {
+								SocialSharing.share('Cekuj tenhle dis!', 'Foto', target.toDataURL('image/jpeg'));
+							}
+						},
+						{
+							text: 'Save',
+							handler: () => {
+								//TODO
+							}
+						},
+						{
+							text: 'Cancel',
+							role: 'cancel'
+						}
+					]
+				});
+				this.nav.present(sheet);
 			}
 		});
 		wrh.generateClones();
