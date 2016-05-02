@@ -14,7 +14,6 @@ export class WarholizePage {
 	
     constructor(nav, navParams){
 		this.generated = false;
-		this.imgSrc = 'img/demo.jpg'; //default image
 		var imageData = navParams.get('imageData');
 		if(imageData){
 			this.useNewImageAsSrc(imageData);	

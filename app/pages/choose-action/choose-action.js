@@ -11,6 +11,10 @@ export class ChooseActionPage {
 	}
 	constructor(nav) {
 		this.nav = nav;
+
+		setTimeout(function(){
+
+		},500);
 	}
 	/**
 	 * @description Starts the device's camera
@@ -28,15 +32,48 @@ export class ChooseActionPage {
 		Camera.getPicture(options).then((imageData) => {
 			this.nav.push(WarholizePage, {imageData: imageData});
 		}, (err) => {
-			console.log('camera error');
-			var demo = document.createElement("canvas");
-			demo.width = 500;
-			demo.height = 500;
-			var img = new Image;
-			img.src = "../../img/demo.jpg";
-			img.onload = () => {
-				demo.getContext("2d").drawImage(img, 0, 0, 500, 500);
-				this.nav.push(WarholizePage, {imageData: demo.toDataURL("image/jpeg")});
+
+
+			if(source !== 'device'){
+				var canvas = document.getElementById("canvas"),
+					context = canvas.getContext("2d"),
+					video = document.getElementById("video"),
+					videoObj = { "video": true },
+					errBack = function(error) {
+						console.log("Video capture error: ", error.code);
+					};
+
+				//if(navigator.getUserMedia) { // Standard
+				//	navigator.getUserMedia(videoObj, function(stream) {
+				//		video.src = stream;
+				//		video.play();
+				//	}, errBack);
+				//}else
+				if(navigator.webkitGetUserMedia) { // WebKit-prefixed
+					navigator.webkitGetUserMedia(videoObj, function(stream){
+						video.src = window.webkitURL.createObjectURL(stream);
+						video.play();
+					}, errBack);
+				}
+				document.getElementById("snap").addEventListener("click", () => {
+					context.drawImage(video, 0, 0, 640, 480);
+					console.info("OK", context);
+
+						this.nav.push(WarholizePage, {imageData: canvas.toDataURL("image/jpeg")});
+
+				});
+			} else{
+				console.log('camera error');
+				var demo = document.createElement("canvas");
+				demo.width = 500;
+				demo.height = 500;
+				var img = new Image;
+				//img.src = "../../build/img/demo.jpg";
+				img.src = "build/img/demo.jpg";
+				img.onload = () => {
+					demo.getContext("2d").drawImage(img, 0, 0, 500, 500);
+					this.nav.push(WarholizePage, {imageData: demo.toDataURL("image/jpeg")});
+				}
 			}
 		});
 	}
