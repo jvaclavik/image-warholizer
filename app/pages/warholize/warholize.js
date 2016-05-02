@@ -1,4 +1,4 @@
-import {Page, NavController, NavParams} from 'ionic-angular';
+import {Page, NavController, NavParams, Loading} from 'ionic-angular';
 import {SocialSharing} from 'ionic-native';
 import {Warholizer} from './warholizer';
 
@@ -13,6 +13,7 @@ export class WarholizePage {
 	}
 	
     constructor(nav, navParams){
+		this.nav = nav;
 		this.generated = false;
 		this.imgSrc = 'img/demo.jpg'; //default image
 		var imageData = navParams.get('imageData');
@@ -24,13 +25,23 @@ export class WarholizePage {
 	/**
 	 * @description Generates clones of source image with applied effects
 	 */
-	applyEffect(){
+	applyEffect(orientation){
 		if(this.generated) return;
+		let loading = Loading.create({
+			content: 'Tvrdě makám...'
+		});
 		var wrh = new Warholizer({
 			previewsElemId: 'previews',
 			sourceImgId: 'source-image',
 			resultWrapperNameBase: 'result-wrapper-',
 			resultElementNameBase: 'result-',
+			orientation: orientation,
+			onRenderStart: () => {
+				this.nav.present(loading);
+			},
+			onRenderFinished: () => {
+ 				loading.dismiss();
+			},
 			cloneClickedHandler: (target) => {
 				SocialSharing.share('Cekuj tenhle dis!', 'Foto', target.toDataURL('image/jpeg'));
 			}

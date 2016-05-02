@@ -2,6 +2,8 @@ import {Page, NavController} from 'ionic-angular';
 import {Camera} from 'ionic-native';
 import {WarholizePage} from '../warholize/warholize';
 
+const BASE_DIMENSION = 500;
+
 @Page({
 	templateUrl: 'build/pages/choose-action/choose-action.html',
 })
@@ -19,8 +21,8 @@ export class ChooseActionPage {
 	getPicture(source) {
 		var options = {
 			destinationType: 0, //base64
-			quality: 50,
-			targetWidth: 500
+			quality: 60,
+			targetWidth: BASE_DIMENSION
 		};
 		if(source === 'device'){
 			options.sourceType = 0; //photo library	
@@ -30,12 +32,12 @@ export class ChooseActionPage {
 		}, (err) => {
 			console.log('camera error');
 			var demo = document.createElement("canvas");
-			demo.width = 500;
-			demo.height = 500;
+			demo.width = BASE_DIMENSION;
+			demo.height = BASE_DIMENSION;
 			var img = new Image;
 			img.src = "../../img/demo.jpg";
 			img.onload = () => {
-				demo.getContext("2d").drawImage(img, 0, 0, 500, 500);
+				demo.getContext("2d").drawImage(img, 0, 0, BASE_DIMENSION, BASE_DIMENSION);
 				this.nav.push(WarholizePage, {imageData: demo.toDataURL("image/jpeg")});
 			}
 		});

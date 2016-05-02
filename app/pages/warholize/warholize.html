@@ -10,5 +10,6 @@
 
     <img src="{{imgSrc}}" alt="" id="source-image">
     <div id="previews"></div>
-    <button block (click)="applyEffect()" *ngIf="!generated">Upravit obrazek</button>
+    <button block (click)="applyEffect('vertical')" *ngIf="!generated">Upravit obrazek (V)</button>
+    <button block (click)="applyEffect('horizontal')" *ngIf="!generated">Upravit obrazek (H)</button>
 </ion-content>
