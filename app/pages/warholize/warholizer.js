@@ -59,6 +59,7 @@ export class Warholizer {
     }
 
     generateClones() {
+		this.onRenderStart();
         var filterCopy = this.cloneFilter(this.filters);
 		var resultCanvas = document.createElement('canvas');
 		resultCanvas.width = IMG_WIDTH;
@@ -68,7 +69,6 @@ export class Warholizer {
 		var offsetV = 0;
 		var stripeWidth = Math.round(IMG_WIDTH / filterCopy.length);
 		var stripeHeight = Math.round(IMG_HEIGHT / filterCopy.length);
-		this.onRenderStart();
         for (let index in filterCopy) {
 
             var filter = filterCopy[index];

@@ -1,20 +1,23 @@
 import {Page, NavController, NavParams, Loading, ActionSheet} from 'ionic-angular';
 import {SocialSharing} from 'ionic-native';
 import {Warholizer} from './warholizer';
+import {GalleryProvider} from '../../providers/gallery-provider/gallery-provider';
 
 const BASE64_PREFIX = "data:image/jpeg;base64,";
 
 @Page({
-    templateUrl: 'build/pages/warholize/warholize.html'
+    templateUrl: 'build/pages/warholize/warholize.html',
+	providers: [GalleryProvider]
 })
 export class WarholizePage {
 	static get parameters(){
-		return [[NavController], [NavParams]];	
+		return [[NavController], [NavParams], [GalleryProvider]];	
 	}
 	
-    constructor(nav, navParams){
+    constructor(nav, navParams, gallery){
 		this.nav = nav;
 		this.generated = false;
+		this.gallery = gallery;
 		this.imgSrc = 'img/demo.jpg'; //default image
 		var imageData = navParams.get('imageData');
 		if(imageData){
@@ -55,7 +58,7 @@ export class WarholizePage {
 						{
 							text: 'Save',
 							handler: () => {
-								//TODO
+								this.gallery.savePhoto(target);
 							}
 						},
 						{
