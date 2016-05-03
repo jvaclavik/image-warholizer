@@ -25,7 +25,6 @@ export class WarholizePage {
     }
 
 
-
     /**
      * @description Generates clones of source image with applied effects
      */
@@ -35,19 +34,21 @@ export class WarholizePage {
             content: 'Working hard...'
         });
         let wrh = new Warholizer({
-                previewsElemId: 'previews',
-                sourceImgId: 'source-image',
-                resultWrapperNameBase: 'result-wrapper-',
-                resultElementNameBase: 'result-',
-                orientation: orientation,
-                onRenderStart: () => {
-                    this.nav.present(loading);
-                },
-                onRenderFinished: () => {
-                    loading.dismiss();
-                },
-                cloneClickedHandler: this.showActionSheet
-            });
+            previewsElemId: 'previews',
+            sourceImgId: 'source-image',
+            resultWrapperNameBase: 'result-wrapper-',
+            resultElementNameBase: 'result-',
+            orientation: orientation,
+            onRenderStart: () => {
+                this.nav.present(loading);
+            },
+            onRenderFinished: () => {
+                loading.dismiss();
+            },
+            cloneClickedHandler: (target) => {
+                this.showActionSheet(target);
+            }
+        });
         wrh.generateClones();
         this.generated = true;
     }
