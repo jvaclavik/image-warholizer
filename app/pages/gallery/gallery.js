@@ -8,7 +8,6 @@ import {GalleryProvider} from '../../providers/gallery-provider/gallery-provider
     providers: [GalleryProvider]
 })
 export class GalleryPage {
-
     static get parameters(){
         return [[NavController], [GalleryProvider]]
     }
@@ -19,7 +18,6 @@ export class GalleryPage {
     }
 
     showImages(index){
-
         let modal = Modal.create(GalleryDetailPage, {index: index});
         this.nav.present(modal);
     }

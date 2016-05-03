@@ -1,4 +1,3 @@
-
 <ion-navbar *navbar>
     <button menuToggle>
         <ion-icon name="menu"></ion-icon>
@@ -6,10 +5,9 @@
     <ion-title>Warholize</ion-title>
 </ion-navbar>
 
-<ion-content padding class="getting-started">
-
+<ion-content padding class="warholize">
     <img src="{{imgSrc}}" alt="" id="source-image">
     <div id="previews"></div>
-    <button block (click)="applyEffect('vertical')" *ngIf="!generated">Upravit obrazek (V)</button>
-    <button block (click)="applyEffect('horizontal')" *ngIf="!generated">Upravit obrazek (H)</button>
+    <button block (click)="applyEffect('vertical')" *ngIf="!generated">Vertical effect</button>
+    <button block (click)="applyEffect('horizontal')" *ngIf="!generated">Horizontal effect</button>
 </ion-content>
