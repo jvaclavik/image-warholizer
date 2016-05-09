@@ -6,6 +6,12 @@
 </ion-navbar>
 
 <ion-content padding class="choose-action">
-    <button block (click)="getPicture('device')">Choose from device</button>
-    <button block (click)="getPicture('camera')">Take a picture</button>
+	<button block (click)="getPicture('device')">Choose from device</button>
+	<button block (click)="getPicture('camera')">Take a picture</button>
+
+	<video id="video" width="100%" autoplay></video>
+
+    <button class="button button-block button-secondary" id="snap">Snap Photo</button>
+
+	<canvas class="hide" id="canvas" width="640" height="480"></canvas>
 </ion-content>
