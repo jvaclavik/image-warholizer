@@ -14,10 +14,6 @@ export class ChooseActionPage {
 	}
 	constructor(nav) {
 		this.nav = nav;
-
-		setTimeout(function(){
-
-		},500);
 	}
 	
 	isElectron(){
@@ -73,7 +69,6 @@ export class ChooseActionPage {
 				demo.width = BASE_DIMENSION;
 				demo.height = BASE_DIMENSION;
 				var img = new Image;
-				//img.src = "../../build/img/demo.jpg";
 				img.src = "../../img/demo.jpg";
 				img.onload = () => {
 				demo.getContext("2d").drawImage(img, 0, 0, BASE_DIMENSION, BASE_DIMENSION);
