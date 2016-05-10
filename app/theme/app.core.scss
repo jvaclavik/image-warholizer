@@ -1,12 +1,9 @@
 // http://ionicframework.com/docs/v2/theming/
-
-
 // App Shared Imports
 // --------------------------------------------------
 // These are the imports which make up the design of this app.
 // By default each design mode includes these shared imports.
 // App Shared Sass variables belong in app.variables.scss.
-
 @import "../pages/warholize/warholize";
 @import "../pages/gallery-detail/gallery-detail.scss";
 @import "../pages/gallery/gallery.scss";
@@ -27,3 +24,15 @@
 //    display: none;
 //  }
 //}
+
+.toolbar {
+  .toolbar-background {
+    background: url(../../img/header.jpg) center center;
+    background-size: cover;
+    border: 0;
+  }
+  .toolbar-title {
+    color: #fff;
+    text-transform: uppercase;
+  }
+}

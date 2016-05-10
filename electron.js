@@ -5,13 +5,6 @@
 var app = require('app');  // Module to control application life.
 var BrowserWindow = require('browser-window');  // Module to create native browser window.
 var debug = require('electron-debug')({showDevTools: true});
-const EventEmitter = require('events');
-//var remote = require('remote'),
-//    remoteIpc = remote.require('ipc');
-
-//var Menu = require('menu');
-
-
 var mainWindow = null;
 
 // Quit when all windows are closed.
@@ -25,25 +18,9 @@ app.on('window-all-closed', function () {
 
 
 
-function ahoj(){
-    //console.log(mainWindow);
-    //const myEmitter = new EventEmitter();
-
-    //myEmitter.emit('eventi');
-
-    //var event = new Event('build');
-    //document.body.addEventListener('build', function (e) {  }, false);
-    //document.body.dispatchEvent(event);
-
-}
-
-
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 app.on('ready', function () {
-
-
-
     mainWindow = new BrowserWindow({width: 1100, height: 900});
     mainWindow.loadUrl('file://' + __dirname + '/www/index.html');
     mainWindow.on('closed', function () {
