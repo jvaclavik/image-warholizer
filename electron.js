@@ -4,12 +4,14 @@
 
 var app = require('app');  // Module to control application life.
 var BrowserWindow = require('browser-window');  // Module to create native browser window.
+var debug = require('electron-debug')({showDevTools: true});
+const EventEmitter = require('events');
+//var remote = require('remote'),
+//    remoteIpc = remote.require('ipc');
 
-// Report crashes to our server.
-require('crash-reporter').start();
+//var Menu = require('menu');
 
-// Keep a global reference of the window object, if you don't, the window will
-// be closed automatically when the JavaScript object is GCed.
+
 var mainWindow = null;
 
 // Quit when all windows are closed.
@@ -21,23 +23,30 @@ app.on('window-all-closed', function () {
     }
 });
 
+
+
+function ahoj(){
+    //console.log(mainWindow);
+    //const myEmitter = new EventEmitter();
+
+    //myEmitter.emit('eventi');
+
+    //var event = new Event('build');
+    //document.body.addEventListener('build', function (e) {  }, false);
+    //document.body.dispatchEvent(event);
+
+}
+
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 app.on('ready', function () {
 
-    // Create the browser window.
+
+
     mainWindow = new BrowserWindow({width: 1100, height: 900});
-
-    // and load the index.html of the app.
-
-    mainWindow.loadUrl('file://' + __dirname + '/index.html');
-
-
-    // Emitted when the window is closed.
+    mainWindow.loadUrl('file://' + __dirname + '/www/index.html');
     mainWindow.on('closed', function () {
-        // Dereference the window object, usually you would store windows
-        // in an array if your app supports multi windows, this is the time
-        // when you should delete the corresponding element.
         mainWindow = null;
     });
 });

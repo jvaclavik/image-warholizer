@@ -1,4 +1,13 @@
 {
+  "name": "Warholizer",
+  "description": "image warholizer",
+  "version": "0.1.0",
+  "main": "electron.js",
+  "author": "User Technologies",
+  "scripts": {
+    "start": "electron",
+    "build": "electron-packager . Warholizer --ignore=node_modules/electron-* --platform=darwin --arch=x64 --version=0.36.10 && cp resources/icon.icns Warholizer-darwin-x64/Warholizer.app/Contents/Resources/atom.icns"
+  },
   "dependencies": {
     "angular2": "2.0.0-beta.15",
     "caman": "git+https://github.com/danielrys/CamanJS.git",
@@ -10,7 +19,11 @@
     "rxjs": "5.0.0-beta.2"
   },
   "devDependencies": {
+    "asar": "^0.10.0",
     "del": "2.2.0",
+    "electron-debug": "^0.7.0",
+    "electron-packager": "^3.2.0",
+    "electron-prebuilt": "^0.25.2",
     "gulp": "3.9.1",
     "gulp-watch": "4.3.5",
     "ionic-gulp-browserify-es2015": "^1.0.2",
@@ -20,8 +33,6 @@
     "ionic-gulp-scripts-copy": "^1.0.1",
     "run-sequence": "1.1.5"
   },
-  "name": "image-warholizer",
-  "description": "image-warholizer: An Ionic project",
   "cordovaPlugins": [
     "cordova-plugin-device",
     "cordova-plugin-console",
