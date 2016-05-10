@@ -2,7 +2,6 @@ function sayHello() {
     alert("Hello")
 }
 
-var app = require('app');
 const remote = require('electron').remote;
 const Menu = remote.Menu;
 
@@ -27,14 +26,7 @@ if (process.platform === 'darwin') {
                 },
                 {
                     type: 'separator'
-                },
-                {
-                    label: 'Quit',
-                    accelerator: 'Command+Q',
-                    click: () => {
-                        app.quit();
-                    }
-                },
+                }
             ]
         }
     )
