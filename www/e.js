@@ -1,26 +1,25 @@
-
-
-function ahoj() {
-
+function sayHello() {
+    alert("Hello")
 }
+
 var app = require('app');
 const remote = require('electron').remote;
 const Menu = remote.Menu;
-const MenuItem = remote.MenuItem;
+
 menuTemplate = [
     {
-        label: "aa",
+        label: "Important menu",
         submenu: [
             {
-                label: "tvoje mama",
-                click: ahoj
+                label: "Say hello",
+                click: sayHello
             }
         ]
     }
 ];
 if (process.platform === 'darwin') {
     menuTemplate.unshift({
-            label: "aaa",
+            label: "Basic",
             submenu: [
                 {
                     label: 'About ',
