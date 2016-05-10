@@ -23,9 +23,6 @@ if (process.platform === 'darwin') {
                 {
                     label: 'About ',
                     role: 'about'
-                },
-                {
-                    type: 'separator'
                 }
             ]
         }

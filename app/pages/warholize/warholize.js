@@ -64,11 +64,7 @@ export class WarholizePage {
 				}
             },
             cloneClickedHandler: (target) => {
-				if(Utility.isElectron()){
-					window.open(target.toDataURL('image/png'));	
-				} else {
-					this.showActionSheet(target);
-				}
+				if(!Utility.isElectron()) this.showActionSheet(target);
             }
         });
         wrh.generateClones();

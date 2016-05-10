@@ -1,0 +1,16 @@
+{
+  "name": "Warholizer",
+  "description": "A simple app for applying effects on images from camera or device gallery.",
+  "version": "0.1.0",
+  "main": "electron.js",
+  "author": "User Technologies",
+  "scripts": {
+    "start": "electron",
+    "build": "electron-packager . Warholizer --ignore=node_modules/electron-* --platform=darwin --arch=x64 --version=0.36.10 --overwrite && cp ../resources/icon.icns Warholizer-darwin-x64/Warholizer.app/Contents/Resources/atom.icns"
+  },
+  "devDependencies": {
+    "asar": "^0.10.0",
+    "electron-packager": "^3.2.0",
+    "electron-prebuilt": "^0.37.8"
+  }
+}

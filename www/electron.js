@@ -4,7 +4,6 @@
 
 var app = require('app');  // Module to control application life.
 var BrowserWindow = require('browser-window');  // Module to create native browser window.
-var debug = require('electron-debug')({showDevTools: true});
 var mainWindow = null;
 
 // Quit when all windows are closed.
@@ -22,7 +21,7 @@ app.on('window-all-closed', function () {
 // initialization and is ready to create browser windows.
 app.on('ready', function () {
     mainWindow = new BrowserWindow({width: 1100, height: 900});
-    mainWindow.loadUrl('file://' + __dirname + '/www/index.html');
+    mainWindow.loadUrl('file://' + __dirname + '/index.html');
     mainWindow.on('closed', function () {
         mainWindow = null;
     });
