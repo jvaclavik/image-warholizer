@@ -1,17 +1,17 @@
 <ion-navbar *navbar>
-    <button menuToggle>
+    <button menuToggle *ngIf="!isElectron()">
         <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>New Effect</ion-title>
 </ion-navbar>
 
 <ion-content padding class="choose-action">
-	<button block (click)="getPicture('device')">Choose from device</button>
+	<button block (click)="getPicture('device')" *ngIf="!isElectron()">Choose from device</button>
 	<button block (click)="getPicture('camera')">Take a picture</button>
 
-	<video id="video" width="100%" autoplay></video>
+	<video id="video" width="100%" autoplay *ngIf="isElectron()"></video>
 
-    <button class="button button-block button-secondary" id="snap">Snap Photo</button>
+    <button class="button button-block button-secondary" id="snap" (click)="snapPhoto($event)" *ngIf="isElectron()">Snap Photo</button>
 
 	<canvas class="hide" id="canvas" width="640" height="480"></canvas>
 </ion-content>

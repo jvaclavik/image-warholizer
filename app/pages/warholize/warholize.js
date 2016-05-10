@@ -2,6 +2,7 @@ import {Page, NavController, NavParams, Loading, ActionSheet} from 'ionic-angula
 import {SocialSharing} from 'ionic-native';
 import {Warholizer} from './warholizer';
 import {GalleryProvider} from '../../providers/gallery-provider/gallery-provider';
+import {Utility} from '../../utility';
 const BASE64_PREFIX = "data:image/jpeg;base64,";
 
 @Page({
@@ -23,6 +24,10 @@ export class WarholizePage {
             this.useNewImageAsSrc(imageData);
         }
     }
+	
+	isElectron(){
+		return Utility.isElectron();
+	}
 
 
     /**
@@ -44,9 +49,26 @@ export class WarholizePage {
             },
             onRenderFinished: () => {
                 loading.dismiss();
+				if(Utility.isElectron()){
+					var canvases = document.querySelectorAll('canvas');
+					for(var i = 0; i < canvases.length; i++){
+						var parent = canvases[i].parentElement;
+						if(parent.id == 'previews'){
+							var a = document.createElement('a');
+							a.href = canvases[i].toDataURL('image/jpeg');
+							a.download = 'stripes.jpg';
+							a.appendChild(canvases[i]);
+							parent.appendChild(a);
+						}
+					}
+				}
             },
             cloneClickedHandler: (target) => {
-                this.showActionSheet(target);
+				if(Utility.isElectron()){
+					window.open(target.toDataURL('image/png'));	
+				} else {
+					this.showActionSheet(target);
+				}
             }
         });
         wrh.generateClones();

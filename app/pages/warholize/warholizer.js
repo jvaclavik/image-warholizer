@@ -76,7 +76,7 @@ export class Warholizer {
             clone.id = this.idBase + index;
             clone.dataset.camanHidpiDisabled = "true";
 
-            var div = document.createElement("div");
+            var div = document.createElement("a");
             div.id = this.resultWrapperNameBase + index;
 
 			if(this.orientation == HORIZONTAL_STRIPES){
