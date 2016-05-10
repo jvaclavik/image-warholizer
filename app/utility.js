@@ -4,6 +4,6 @@ export class Utility {
     };
 	
 	static isElectron(){
-		return window && window.process && window.process.type;
+		return (window && window.process && window.process.type) || !window.cordova;
 	};
 }
